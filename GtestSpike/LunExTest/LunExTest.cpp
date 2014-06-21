@@ -7,7 +7,9 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 using ::testing::Return;
+using ::testing::Throw;
 
+#include "../LunexServices/LunExServiceUnavailableException.h"
 #include "../LunexServices/LunExServices.h"
 #include "../StockQuote/StockQuote.h"
 
@@ -23,6 +25,14 @@ TEST(StockQuote, IncludesCommissionAndFee) {
 	StockQuote quote("HE3", 100, lunexService);
 
 	EXPECT_EQ(1234, quote.total());
+}
+
+TEST(StockQuote, ThrowsEarthboundException) {
+	MockService lunexService;
+	EXPECT_CALL(lunexService, currentPrice("HE3")).WillOnce(Throw(LunExServiceUnavailableException()));
+
+	EXPECT_THROW(StockQuote("HE3", 100, lunexService), LunExServiceUnavailableException);
+
 }
 
 TEST(CalculatorTest, Addition) {
