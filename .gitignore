@@ -19,3 +19,11 @@
 *.exe
 *.out
 *.app
+
+# Stuff we excluded
+Debug
+ipch
+*.suo
+*.opensdf
+*.filters
+*.user
