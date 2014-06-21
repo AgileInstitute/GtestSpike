@@ -1,0 +1,4 @@
+GtestSpike
+==========
+
+GTest/GMock experiments
