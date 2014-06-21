@@ -6,6 +6,10 @@
 
 #include "gtest/gtest.h"
 
+TEST(CalculatorTest, Addition) {
+	EXPECT_EQ(4, 2 + 2);
+}
+
 int main(int argc, char** argv)
 {
 	std::cout << "Hello World!!!" << std::endl;
