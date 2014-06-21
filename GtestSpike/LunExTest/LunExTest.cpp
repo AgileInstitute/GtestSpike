@@ -5,13 +5,23 @@
 #include <iostream>
 
 #include "gtest/gtest.h"
+#include "gmock/gmock.h"
+using ::testing::Return;
 
 #include "../LunexServices/LunExServices.h"
 #include "../StockQuote/StockQuote.h"
 
+class MockService : public ITC::SecurityExchangeTransmissionInterface {
+public:
+	MOCK_METHOD1(currentPrice, double(const char* symbol));
+};
+
 TEST(StockQuote, IncludesCommissionAndFee) {
-	LunExServices lunexService;
+	MockService lunexService;
+	EXPECT_CALL(lunexService, currentPrice("HE3")).WillOnce(Return(12));
+
 	StockQuote quote("HE3", 100, lunexService);
+
 	EXPECT_EQ(1234, quote.total());
 }
 
