@@ -91,6 +91,12 @@
     <ProjectReference Include="..\gtest-1.7.0\msvc\gtest.vcxproj">
       <Project>{c8f6c172-56f2-4e76-b5fa-c3b423b31be7}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\LunexServices\LunexServices.vcxproj">
+      <Project>{929c6fad-dfe9-4a91-b81e-7b2a3c6404b5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\StockQuote\StockQuote.vcxproj">
+      <Project>{d8aec67d-30ff-41fa-84ab-5e634b6d58ea}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

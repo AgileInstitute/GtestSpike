@@ -6,6 +6,15 @@
 
 #include "gtest/gtest.h"
 
+#include "../LunexServices/LunExServices.h"
+#include "../StockQuote/StockQuote.h"
+
+TEST(StockQuote, IncludesCommissionAndFee) {
+	LunExServices lunexService;
+	StockQuote quote("HE3", 100, lunexService);
+	EXPECT_EQ(1234, quote.total());
+}
+
 TEST(CalculatorTest, Addition) {
 	EXPECT_EQ(4, 2 + 2);
 }
