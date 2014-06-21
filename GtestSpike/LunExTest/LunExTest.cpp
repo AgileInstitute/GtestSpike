@@ -18,8 +18,14 @@ public:
 	MOCK_METHOD1(currentPrice, double(const char* symbol));
 };
 
-TEST(StockQuote, IncludesCommissionAndFee) {
+class StockQuoteFixture : public ::testing::Test {
+protected:
+	virtual void SetUp() {
+	}
 	MockService lunexService;
+};
+
+TEST_F(StockQuoteFixture, IncludesCommissionAndFee) {
 	EXPECT_CALL(lunexService, currentPrice("HE3")).WillOnce(Return(12));
 
 	StockQuote quote("HE3", 100, lunexService);
@@ -27,8 +33,7 @@ TEST(StockQuote, IncludesCommissionAndFee) {
 	EXPECT_EQ(1234, quote.total());
 }
 
-TEST(StockQuote, ThrowsEarthboundException) {
-	MockService lunexService;
+TEST_F(StockQuoteFixture, ThrowsEarthboundException) {
 	EXPECT_CALL(lunexService, currentPrice("HE3")).WillOnce(Throw(LunExServiceUnavailableException()));
 
 	EXPECT_THROW(StockQuote("HE3", 100, lunexService), LunExServiceUnavailableException);
