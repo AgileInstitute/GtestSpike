@@ -46,10 +46,8 @@ TEST(CalculatorTest, Addition) {
 
 int main(int argc, char** argv)
 {
-	std::cout << "Hello World!!!" << std::endl;
-
 	// run all tests
-	::testing::InitGoogleTest(&argc, argv);
+	::testing::InitGoogleMock(&argc, argv);
 
 	return RUN_ALL_TESTS();
 }
