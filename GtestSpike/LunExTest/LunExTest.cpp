@@ -13,7 +13,7 @@ using ::testing::Throw;
 #include "../LunexServices/LunExServices.h"
 #include "../StockQuote/StockQuote.h"
 
-class MockService : public ITC::SecurityExchangeTransmissionInterface {
+class MockService : public LunExServices {
 public:
 	MOCK_METHOD1(currentPrice, double(const char* symbol));
 };
